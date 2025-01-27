@@ -219,33 +219,28 @@ class Fighter2():
 
     def shoot(self, surface, w, target):
         if self.bullet:
-            # Получаем текущие координаты патрона
             x, y = self.bullet
             x += 15 * (-1) ** self.flip
             bullet = pg.Rect(x, y, 10, 5)
 
-            # Обработка столкновений и выхода за пределы экрана
             self.hit = False
-            if x > w or x < 0:  # Патрон вышел за пределы экрана
+            if x > w or x < 0: 
                 self.bullet = None
-            elif bullet.colliderect(target.rect):  # Патрон попал в цель
+            elif bullet.colliderect(target.rect):  
                 target.health -= 10
                 self.bullet = None
                 self.hit = True
             else:
 
-                # Отображение анимации патрона
-                fireball_frame = self.animation_list[3][self.current_fireball_frame]  # Получаем текущий кадр
+                fireball_frame = self.animation_list[3][self.current_fireball_frame]
                 fireball_frame = pg.transform.flip(fireball_frame, self.flip, False)
-                surface.blit(fireball_frame, (x - 30, y - 30))  # Отображаем кадр патрона
+                surface.blit(fireball_frame, (x - 30, y - 30))
 
-                # Переключение кадров
                 self.fireball_frame_counter += 1
                 if self.fireball_frame_counter >= self.fireball_frame_delay:
                     self.current_fireball_frame = (self.current_fireball_frame + 1) % len(self.animation_list[3])
                     self.fireball_frame_counter = 0
 
-                # Сохраняем обновленные координаты патрона
                 self.bullet = (x, y)
 
     def update_action(self, new_action):
@@ -262,7 +257,7 @@ class Fighter2():
         if self.dead:
             surface.blit(img, (self.rect.x - 190, self.rect.y-85))
         else:
-            surface.blit(img, (self.rect.x - 190, self.rect.y-100))
+            surface.blit(img, (self.rect.x - 190, self.rect.y - 100))
         
         
         

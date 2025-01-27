@@ -12,7 +12,7 @@ GREEN = (36, 144, 0)
 BLACKR = (50, 0, 0 )
 BLACKR2 = (81, 0, 0 )
 
-# Размеры окна
+# Height and width
 W = 736 * 2
 H = 414 * 2
 
@@ -36,21 +36,21 @@ pg.mixer.music.play(-1)
 redw = pg.transform.scale(redw, (W, H))
 greenw = pg.transform.scale(greenw, (W, H))
 
-# Частота кадров
+# fps
 clock = pg.time.Clock()
 screen = pg.display.set_mode((W, H))
 bg = pg.image.load("graphics/background1.jpeg")
 bg = pg.transform.scale(bg, (W, H))
 
-# Параметры кубов
+
 cube1 = Fighter(1, 100, H-160)
-cube2 = Fighter2(2, W-150, H-160)
+cube2 = Fighter(2, W-150, H-160)
 
 redwin = 0
 greenwin = 0
 
 resetgreen = Fighter(1, 100, H-160)
-resetred = Fighter2(2, W-150, H-160)
+resetred = Fighter(2, W-150, 0)
 
 rounds = [
     pg.transform.scale(pg.image.load("graphics/1.png"), (W, H)),
